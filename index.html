@@ -1,0 +1,87 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+
+	<title>Happy Birthday Achuu</title>
+
+	<link rel='icon' href='img/logo.png'>
+
+	<link rel='stylesheet' href='css/all.min.css' />
+	<link rel='stylesheet' href='css/bootstrap.min.css' />
+	<link rel='stylesheet' href='css/index.css' />
+	<!-- <link rel="stylesheet" href="css/brands.min.css" /> -->
+
+	<meta name='description' content='Happy Birthday, Achuu'>
+	<meta http-equiv='content-language' content='en'>
+
+	<!-- <link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">  -->
+</head>
+
+<body onload="typeWriter()">
+	<!-- Video Source -->
+	<!-- https://www.pexels.com/video/aerial-view-of-beautiful-resort-2169880/ -->
+	<section class="showcase">
+		<header>
+			<h2 class="logo">ഇരുപത്തി മൂന്ന്</h2>
+		</header>
+		<video src="./assets/vid2.mp4" muted loop autoplay></video>
+		<!-- <div class="overlay"></div> -->
+		<div class="text">
+			<h2>Happy Twenty Three</h2>
+			<h3 id="anim-placeholder"></h3>
+			<!-- <p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat.
+			</p> -->
+		</div>
+		<iframe src="https://open.spotify.com/embed/playlist/5lfiXbOmShnO74VGqW0oXQ" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+	</section>
+
+	<script type="text/javascript">
+		// var i = 0;
+		// var txt = 'Lorem ipsum typing effect!'; /* The text */
+		var speed = 50; /* The speed/duration of the effect in milliseconds */
+		const messages = [
+			"romense kween",
+			"freak penne",
+			"thalaivi"
+		];
+
+		function setText(text) {
+			setTimeout(function() {
+				console.log(text);
+				document.getElementById("anim-placeholder").innerHTML = text;
+			}, speed);
+		}
+
+		function typeWriter() {
+			setText('hello');
+			let i = 0;
+			let text = '';
+			messages.map(function(message) {
+				i = 0;
+				text = '';
+				while (i < message.length) {
+					text += message.charAt(i);≈
+					this.setText(text);
+					i++;
+				}
+				while (i > 0) {
+					text = text.substring(0, text.length - 1);
+					setText(text);
+					i--;
+				}
+			});
+		}
+
+
+	</script>
+
+</body>
+
+</html>
