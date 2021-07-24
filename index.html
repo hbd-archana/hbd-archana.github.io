@@ -20,17 +20,19 @@
 	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">  -->
 </head>
 
-<body onload="typeWriter()">
+<body>
 	<!-- Video Source -->
 	<!-- https://www.pexels.com/video/aerial-view-of-beautiful-resort-2169880/ -->
 	<section class="showcase">
 		<header>
 			<h2 class="logo">ഇരുപത്തി മൂന്ന്</h2>
 		</header>
-		<video src="./assets/vid2.mp4" muted loop autoplay></video>
+		<video id="landing-video" muted autoplay>
+			<source src="./assets/vid1.mp4" id="mp4Source" type="video/mp4">
+		</video>
 		<!-- <div class="overlay"></div> -->
 		<div class="text">
-			<h2>Happy Twenty Three</h2>
+			<h2>Happy Twenty Three,</h2>
 			<h3 id="anim-placeholder"></h3>
 			<!-- <p>
 				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -39,49 +41,147 @@
 				consequat.
 			</p> -->
 		</div>
-		<iframe src="https://open.spotify.com/embed/playlist/5lfiXbOmShnO74VGqW0oXQ" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+		<iframe src="https://open.spotify.com/embed/playlist/5lfiXbOmShnO74VGqW0oXQ"
+			frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 	</section>
 
+	<section>
+		<div class="px-4 py-5 my-5 text-center">
+			<img class="d-block mx-auto mb-4" src="./img/logo.png" alt="" width="75" height="75">
+			<h1 class="display-5 fw-bold">Another crazy year, yeah?</h1>
+			<div class="col-lg-6 mx-auto">
+			  <p class="lead mb-4">This is something small that we could do while being in our couches. Hope you're listening to the little playlist we made and embedded here. We are fortunate to have known you
+				and we're really proud of everything that you do.</p>
+			</div>
+		  </div>
+	</section>
+
+	<section class="messages">
+
+		<div class="frandships row">
+
+			<div class="col-lg-4 d-flex align-items-stretch">
+				<div class="frandship-card">
+					<div class="image-container">
+						<img src="./assets/frands/aparna.jpg" class="card-img-top" alt="...">
+					</div>
+					<div class="card-text">
+						Hello Lorem Ipsum
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-4 d-flex align-items-stretch">
+				<div class="frandship-card">
+					<div class="image-container">
+						<img src="./assets/frands/anandita.jpeg" class="card-img-top" alt="...">
+					</div>
+					<div class="card-text">
+						Here’s a little reminder about how special you are for all of us!
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-4 d-flex align-items-stretch">
+				<div class="frandship-card">
+					<div class="image-container">
+						<img src="./assets/frands/suri.jpg" class="card-img-top" alt="...">
+					</div>
+					<div class="card-text">To my partner in cri(nge)me, I hope you know how much having you beside me
+						means to me. You are and always will be <b>my number one</b>.</div>
+				</div>
+			</div>
+
+			<div class="col-lg-4 d-flex align-items-stretch">
+				<div class="frandship-card">
+					<div class="image-container">
+						<img src="./assets/frands/fathima.jpeg" class="card-img-top" alt="...">
+					</div>
+					<div class="card-text">To my sexiest girlfriend, please publish a book with your dating tips and
+						help your signle friends out here. Use your super power!</div>
+				</div>
+			</div>
+
+			<div class="col-lg-4 d-flex align-items-stretch">
+				<div class="frandship-card">
+					<div class="image-container">
+						<img src="./assets/frands/gokul.jpeg" class="card-img-top" alt="...">
+					</div>
+					<div class="card-text">Happy Birthday!!! Keep checking up on my reading. I love youuu!</div>
+				</div>
+			</div>
+
+			<div class="col-lg-4 d-flex align-items-stretch">
+				<div class="frandship-card">
+					<div class="image-container">
+						<img src="./assets/frands/laya.jpeg" class="card-img-top" alt="...">
+					</div>
+					<div class="card-text">Who's Awesome??? The birthday girl</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+	<!-- <footer>
+		<p>This is something small that we could do while we're away from each other. We are fortunate to have known you
+			and we're really proud of everything that you do. We hope you have a great day!</p>
+	</footer> -->
+
 	<script type="text/javascript">
-		// var i = 0;
-		// var txt = 'Lorem ipsum typing effect!'; /* The text */
-		var speed = 50; /* The speed/duration of the effect in milliseconds */
+
+		var speed = 500;
+		var printing = true;
+
 		const messages = [
+			"ultimate human / genius",
 			"romense kween",
 			"freak penne",
-			"thalaivi"
+			"thalaivi",
+			"achukutty",
+			"oppuu",
+			"Archana :)"
 		];
 
-		function setText(text) {
-			setTimeout(function() {
-				console.log(text);
-				document.getElementById("anim-placeholder").innerHTML = text;
+		var count=1;
+		var player=document.getElementById('landing-video');
+		var mp4Vid = document.getElementById('mp4Source');
+		player.addEventListener('ended', playNext, false);
+
+		function playNext(e)
+		{
+			if(count === 6) {
+				count = 0;
+			}
+			if(!e) {
+				e = window.event; 
+			}
+			count++;
+			mp4Vid.setAttribute("src", "./assets/vid"+count+".mp4");
+			player.load();
+			player.play();
+		}
+
+		setMessage = (text) => {
+			document.getElementById("anim-placeholder").innerText = text;
+		}
+
+		window.addEventListener('load', () => {
+			showMessages();
+		});
+
+		var i = 0;
+
+		showMessages = () => {
+			setTimeout(() => {
+				setMessage(messages[i]);
+				i++;
+				if (i < messages.length) {
+					showMessages();
+				}
 			}, speed);
-		}
-
-		function typeWriter() {
-			setText('hello');
-			let i = 0;
-			let text = '';
-			messages.map(function(message) {
-				i = 0;
-				text = '';
-				while (i < message.length) {
-					text += message.charAt(i);≈
-					this.setText(text);
-					i++;
-				}
-				while (i > 0) {
-					text = text.substring(0, text.length - 1);
-					setText(text);
-					i--;
-				}
-			});
-		}
-
-
+		};
 	</script>
-
 </body>
 
 </html>
