@@ -1,36 +1,57 @@
-var speed = 3000; /* The speed/duration of the effect in milliseconds */
+var speed = 500;
+var printing = true;
+
 const messages = [
-    "romense kween",
+    "archuu",
     "freak penne",
-    "thalaivi"
+    "chalil",
+    "romense kween",
+    "thalaivi",
+    "achukutty",
+    "oppuu",
+    "chellam",
+    "ultimate human / genius",
+    "tharkootharam",
+    "rosamma",
+    "chana",
+    "Archana :)"
 ];
 
-function setText(text) {
-    setTimeout(function () {
-        console.log(text);
-        document.getElementById("anim-placeholder").innerHTML = text;
-    }, speed);
+var count=1;
+var player=document.getElementById('landing-video');
+var mp4Vid = document.getElementById('mp4Source');
+player.addEventListener('ended', playNext, false);
+
+function playNext(e)
+{
+    if(count === 6) {
+        count = 0;
+    }
+    if(!e) {
+        e = window.event; 
+    }
+    count++;
+    mp4Vid.setAttribute("src", "./assets/vid"+count+".mp4");
+    player.load();
+    player.play();
 }
 
-function typeWriter() {
-    let i = 0;
-    let text = '';
-    messages.map(function (message) {
-        document.getElementById("anim-placeholder").innerHTML = message;
-        setTimeout(function () { }, 2000);
-    });
+setMessage = (text) => {
+    document.getElementById("anim-placeholder").innerText = text;
 }
+
+window.addEventListener('load', () => {
+    showMessages();
+});
+
+var i = 0;
 
 showMessages = () => {
-			
     setTimeout(() => {
-        const toPrint = messages[i].splice(0, char+1);
-        char++;
-
-        // document.getElementById("anim-placeholder").innerText = toPrint;
-        // i++;
-        // if (i < messages.length) {
-        // 	showMessages();
-        // }
+        setMessage(messages[i]);
+        i++;
+        if (i < messages.length) {
+            showMessages();
+        }
     }, speed);
 };
